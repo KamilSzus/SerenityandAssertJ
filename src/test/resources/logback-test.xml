@@ -7,11 +7,11 @@
         </encoder>
     </appender>
 
-    <logger name="root" level="WARN"/>
+    <logger name="root" level="DEBUG"/>
     <logger name="net.serenitybdd" level="INFO"/>
     <logger name="net.thucydides" level="INFO"/>
 
-    <root level="WARN">
+    <root level="DEBUG">
         <appender-ref ref="STDOUT"/>
     </root>
 
