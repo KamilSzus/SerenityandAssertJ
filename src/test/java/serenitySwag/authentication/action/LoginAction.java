@@ -13,4 +13,13 @@ public class LoginAction extends UIInteractionSteps {
         $(("[data-test='password']")).sendKeys("secret_sauce");
         $(("[data-test='login-button']")).click();
     }
+
+    @Step("Login as a problem user")
+    public void loginAsProblemUser(){
+        openUrl("https://www.saucedemo.com/");
+
+        $(("[data-test='username']")).sendKeys("problem_user");
+        $(("[data-test='password']")).sendKeys("secret_sauce");
+        $(("[data-test='login-button']")).click();
+    }
 }
