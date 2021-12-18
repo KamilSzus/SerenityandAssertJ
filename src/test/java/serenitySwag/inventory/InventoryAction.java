@@ -1,4 +1,4 @@
-package serenitySwag.authentication.inventory;
+package serenitySwag.inventory;
 
 import net.serenitybdd.core.pages.PageObject;
 

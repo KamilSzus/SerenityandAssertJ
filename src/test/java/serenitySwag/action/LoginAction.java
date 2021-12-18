@@ -1,4 +1,4 @@
-package serenitySwag.authentication.action;
+package serenitySwag.action;
 
 import net.serenitybdd.core.steps.UIInteractionSteps;
 import net.thucydides.core.annotations.Step;

@@ -1,4 +1,4 @@
-package serenitySwag.authentication.action;
+package serenitySwag.action;
 
 /*
 Accepted usernames are:
