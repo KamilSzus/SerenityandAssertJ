@@ -1,5 +1,7 @@
 package serenitySwag.authentication;
 
+import net.serenitybdd.core.Serenity;
+import net.serenitybdd.core.SerenityReports;
 import net.serenitybdd.junit.runners.SerenityRunner;
 import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Steps;
@@ -7,6 +9,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
 import serenitySwag.authentication.action.LoginAction;
+import serenitySwag.authentication.action.User;
 import serenitySwag.authentication.inventory.InventoryAction;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
@@ -22,8 +25,9 @@ public class WhenLoggingOn {
 
     @Test
     public void loggingIn(){
-        loginAction.loginAsStandardUser();
+        loginAction.loginAS(User.STANDARD_USER);
 
-        assertThat(inventoryAction.getHeading()).isEqualToIgnoringCase("Products");
+        Serenity.reportThat("Check if heading is equal to \"Products\" ",()->
+                assertThat(inventoryAction.getHeading()).isEqualToIgnoringCase("Products"));
     }
 }
