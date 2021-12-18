@@ -1,16 +1,15 @@
 package serenitySwag.authentication;
 
 import net.serenitybdd.core.Serenity;
-import net.serenitybdd.core.SerenityReports;
 import net.serenitybdd.junit.runners.SerenityRunner;
 import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Steps;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
-import serenitySwag.authentication.action.LoginAction;
-import serenitySwag.authentication.action.User;
-import serenitySwag.authentication.inventory.InventoryAction;
+import serenitySwag.action.LoginAction;
+import serenitySwag.action.User;
+import serenitySwag.inventory.InventoryAction;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
