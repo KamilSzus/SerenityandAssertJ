@@ -5,21 +5,12 @@ import net.thucydides.core.annotations.Step;
 
 public class LoginAction extends UIInteractionSteps {
 
-    @Step("Login as a standard user")
-    public void loginAsStandardUser(){
+    @Step("Login as {0}")
+    public void loginAS(User user){
         openUrl("https://www.saucedemo.com/");
 
-        $(("[data-test='username']")).sendKeys("standard_user");
-        $(("[data-test='password']")).sendKeys("secret_sauce");
-        $(("[data-test='login-button']")).click();
-    }
-
-    @Step("Login as a problem user")
-    public void loginAsProblemUser(){
-        openUrl("https://www.saucedemo.com/");
-
-        $(("[data-test='username']")).sendKeys("problem_user");
-        $(("[data-test='password']")).sendKeys("secret_sauce");
+        $(("[data-test='username']")).sendKeys(user.getUserLogin());
+        $(("[data-test='password']")).sendKeys(user.getUserPassword());
         $(("[data-test='login-button']")).click();
     }
 }
