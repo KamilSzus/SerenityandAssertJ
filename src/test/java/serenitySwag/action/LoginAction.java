@@ -2,6 +2,9 @@ package serenitySwag.action;
 
 import net.serenitybdd.core.steps.UIInteractionSteps;
 import net.thucydides.core.annotations.Step;
+import org.openqa.selenium.By;
+
+//How to find element using name
 
 public class LoginAction extends UIInteractionSteps {
 
@@ -9,8 +12,8 @@ public class LoginAction extends UIInteractionSteps {
     public void loginAS(User user){
         openUrl("https://www.saucedemo.com/");
 
-        $(("[data-test='username']")).sendKeys(user.getUserLogin());
-        $(("[data-test='password']")).sendKeys(user.getUserPassword());
-        $(("[data-test='login-button']")).click();
+        find(By.name("user-name")).sendKeys(user.getUserLogin());
+        find(By.name("password")).sendKeys(user.getUserPassword());
+        find(By.name("login-button")).click();
     }
 }
