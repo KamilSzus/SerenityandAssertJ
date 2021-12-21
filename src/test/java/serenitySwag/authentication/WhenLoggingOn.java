@@ -7,8 +7,6 @@ import net.thucydides.core.annotations.Steps;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
-import serenitySwag.action.LoginAction;
-import serenitySwag.action.User;
 import serenitySwag.inventory.InventoryAction;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
