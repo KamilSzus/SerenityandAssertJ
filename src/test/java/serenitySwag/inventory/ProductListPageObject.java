@@ -2,13 +2,16 @@ package serenitySwag.inventory;
 
 import net.serenitybdd.core.pages.PageObject;
 import net.thucydides.core.annotations.Step;
+import org.openqa.selenium.By;
 
 import java.util.List;
 
-public class ProductPageListObjects extends PageObject {
+public class ProductListPageObject extends PageObject {
 
-    @Step("Get list of products from page")
     public List<String> getListOfProductsOnPage(){
         return findAll(".inventory_item_name").textContents();
+    }
+    public void openProductsDetailsFor(String itemName){
+        find(By.linkText(itemName)).click();
     }
 }
