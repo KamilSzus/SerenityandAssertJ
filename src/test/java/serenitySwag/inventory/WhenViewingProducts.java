@@ -39,6 +39,6 @@ public class WhenViewingProducts {
         productListPageObject.openProductsDetailsFor(product);
 
         assertThat(productDetailsPage.productName()).isEqualTo(product);
-
+        productListPageObject.checkIfImageIsVisible(product).shouldBeVisible();
     }
 }
