@@ -3,6 +3,7 @@ package serenitySwag.inventory;
 import net.serenitybdd.junit.runners.SerenityRunner;
 import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Steps;
+import org.assertj.core.api.SoftAssertions;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
@@ -30,6 +31,17 @@ public class WhenViewingProducts {
 
         assertThat(listOfProducts).hasSize(6)
                 .contains("Sauce Labs Bike Light");
+    }
+
+    @Test
+    public void shouldDisplayAllImage(){
+        loginAction.loginAS(User.STANDARD_USER);
+        List<String> listOfProducts = productListPageObject.getListOfProductsOnPage();
+
+        listOfProducts.forEach(
+                productsName -> assertThat(productListPageObject.imageTextForProducts(productsName)).isEqualTo(productsName)
+        );
+
     }
 
     @Test
