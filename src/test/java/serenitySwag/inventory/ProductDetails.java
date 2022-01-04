@@ -2,7 +2,6 @@ package serenitySwag.inventory;
 
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementState;
-import org.openqa.selenium.By;
 
 public class ProductDetails extends PageObject {
 
