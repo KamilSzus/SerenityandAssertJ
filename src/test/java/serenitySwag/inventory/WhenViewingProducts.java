@@ -1,5 +1,6 @@
 package serenitySwag.inventory;
 
+import net.serenitybdd.core.Serenity;
 import net.serenitybdd.junit.runners.SerenityRunner;
 import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Steps;
@@ -20,13 +21,16 @@ public class WhenViewingProducts {
 
     @Steps
     LoginAction loginAction;
-    ProductListPageObject productListPageObject;
-    ProductDetailsPageObject productDetailsPage;
+    @Steps
+    ViewProductDetailsAction viewProductDetails;
+
+    ProductList productList;
+    ProductDetails productDetails;
 
     @Test
     public void checkProductsListOnPage(){
         loginAction.loginAS(User.STANDARD_USER);
-       List<String> listOfProducts = productListPageObject.getListOfProductsOnPage();
+       List<String> listOfProducts = productList.getListOfProductsOnPage();
 
         assertThat(listOfProducts).hasSize(6)
                 .contains("Sauce Labs Bike Light");
@@ -35,10 +39,10 @@ public class WhenViewingProducts {
     @Test
     public void shouldDisplayAllImage(){
         loginAction.loginAS(User.STANDARD_USER);
-        List<String> listOfProducts = productListPageObject.getListOfProductsOnPage();
+        List<String> listOfProducts = productList.getListOfProductsOnPage();
 
         listOfProducts.forEach(
-                productsName -> assertThat(productListPageObject.imageTextForProducts(productsName)).isEqualTo(productsName)
+                productsName -> assertThat(productList.imageTextForProducts(productsName)).isEqualTo(productsName)
         );
 
     }
@@ -46,10 +50,14 @@ public class WhenViewingProducts {
     @Test
     public void shouldDisplayCorrectProductDetailsPage(){
         loginAction.loginAS(User.STANDARD_USER);
-        String product=productListPageObject.getListOfProductsOnPage().get(1);
-        productListPageObject.openProductsDetailsFor(product);
+        String productName = productList.getListOfProductsOnPage().get(1);
+        viewProductDetails.forProductWithName(productName);
 
-        assertThat(productDetailsPage.productName()).isEqualTo(product);
-        productListPageObject.checkIfImageIsVisible(product).shouldBeVisible();
+        Serenity.reportThat("The product name should be correctly displayed",
+                () -> assertThat(productDetails.productName()).isEqualTo(productName));
+        Serenity.reportThat("The product image should have the correctly alt text",
+                () ->productDetails.checkIfImageIsVisible(productName).shouldBeVisible());
+
+
     }
 }

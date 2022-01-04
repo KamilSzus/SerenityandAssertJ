@@ -6,18 +6,14 @@ import org.openqa.selenium.By;
 
 import java.util.List;
 
-public class ProductListPageObject extends PageObject {
+public class ProductList extends PageObject {
 
     public List<String> getListOfProductsOnPage(){
         return findAll(".inventory_item_name").textContents();
     }
 
-    public void openProductsDetailsFor(String itemName){
-        find(By.linkText(itemName)).click();
-    }
-
-    public WebElementState checkIfImageIsVisible(String product) {
-        return $((".inventory_details_container img[alt = '"+product+"']"));
+    public static By productDetailsLinkFor(String productName) {
+        return By.linkText(productName);
     }
 
     public String imageTextForProducts(String productsName) {
