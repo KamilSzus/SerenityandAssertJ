@@ -10,6 +10,7 @@ import org.openqa.selenium.WebDriver;
 import serenitySwag.authentication.LoginAction;
 import serenitySwag.authentication.User;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -31,7 +32,6 @@ public class WhenViewingProducts {
     public void checkProductsListOnPage(){
         loginAction.loginAS(User.STANDARD_USER);
        List<String> listOfProducts = productList.getListOfProductsOnPage();
-
         assertThat(listOfProducts).hasSize(6)
                 .contains("Sauce Labs Bike Light");
     }
@@ -44,7 +44,6 @@ public class WhenViewingProducts {
         listOfProducts.forEach(
                 productsName -> assertThat(productList.imageTextForProducts(productsName)).isEqualTo(productsName)
         );
-
     }
 
     @Test
@@ -57,7 +56,6 @@ public class WhenViewingProducts {
                 () -> assertThat(productDetails.productName()).isEqualTo(productName));
         Serenity.reportThat("The product image should have the correctly alt text",
                 () ->productDetails.checkIfImageIsVisible(productName).shouldBeVisible());
-
-
     }
+
 }
