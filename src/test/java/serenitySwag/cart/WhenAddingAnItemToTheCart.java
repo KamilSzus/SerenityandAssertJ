@@ -28,6 +28,8 @@ public class WhenAddingAnItemToTheCart {
     LoginAction loginAction;
     ProductList productList;
     ShoppingCartIcon shoppingCartIcon;
+    CartItem cartItem;
+    CartPageObject cartPage;
 
     @Before
     public void loginOn(){
@@ -49,6 +51,15 @@ public class WhenAddingAnItemToTheCart {
                 productName -> Serenity.reportThat("Cart should contains " + productName,
                         () -> assertThat(productList.checkIfCartContains(productName)).isEqualTo(productName))
         );
+    }
+
+    @Test
+    public void priceOfProductShouldBeCorrectlyDisplayedInCart(){
+        addProductToCart();
+        cartPage.open();
+        List<CartItem> items = cartPage.items();
+        Serenity.reportThat("The price in cart shouldn't be zero",
+                ()->assertThat(items).hasSize(3).allMatch(item -> item.price() > 0.0));
     }
 
     private List<String> addProductToCart() {
