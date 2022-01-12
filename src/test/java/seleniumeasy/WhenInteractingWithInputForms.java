@@ -5,6 +5,7 @@ import net.thucydides.core.annotations.Managed;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
+import seleniumeasy.pageobjects.DoubleInputFieldsForm;
 import seleniumeasy.pageobjects.SingleInputFieldsForm;
 
 import java.util.List;
@@ -47,8 +48,19 @@ public class WhenInteractingWithInputForms {
      * https://www.seleniumeasy.com/test/basic-first-form-demo.html
      */
 
+    DoubleInputFieldsForm doubleInputFieldsForm;
+
     @Test
     public void basicFormsWithMultipleFields() {
+        doubleInputFieldsForm.open();
+
+        doubleInputFieldsForm.enterFirstNumber("4");
+
+        doubleInputFieldsForm.enterSecondNumber("6");
+
+        doubleInputFieldsForm.displayNumbers();
+
+        assertThat(doubleInputFieldsForm.displayNumber()).isEqualTo("10");
     }
 
     /**
