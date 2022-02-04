@@ -5,9 +5,11 @@ import net.thucydides.core.annotations.Managed;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
+import seleniumeasy.pageobjects.CheckboxForm;
 import seleniumeasy.pageobjects.DoubleInputFieldsForm;
 import seleniumeasy.pageobjects.SingleInputFieldsForm;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static java.util.Arrays.asList;
@@ -68,12 +70,35 @@ public class WhenInteractingWithInputForms {
      * Check that a message appears when you click the checkbox
      * https://www.seleniumeasy.com/test/basic-checkbox-demo.html
      */
+
+    CheckboxForm checkboxForm;
+
     @Test
     public void singleCheckbox() {
+        checkboxForm.open();
+
+        checkboxForm.setCheckboxSelected();
+
+        assertThat(checkboxForm.checkboxText()).isEqualTo("Success - Check box is checked");
     }
+
+    private static final List<String> ALL_OPTIONS = asList("Option 1","Option 2","Option 3","Option 4");
 
     @Test
     public void multipleCheckboxes() {
+        checkboxForm.open();
+
+        assertThat(ALL_OPTIONS).allMatch(
+                option -> !checkboxForm.optionIsCheckedFor(option)
+        );
+
+
+        checkboxForm.checkAll();
+
+        assertThat(ALL_OPTIONS).allMatch(
+                option -> checkboxForm.optionIsCheckedFor(option)
+        );
+
     }
 
     /**
