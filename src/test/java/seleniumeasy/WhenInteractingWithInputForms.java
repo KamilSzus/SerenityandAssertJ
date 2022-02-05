@@ -7,9 +7,10 @@ import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
 import seleniumeasy.pageobjects.CheckboxForm;
 import seleniumeasy.pageobjects.DoubleInputFieldsForm;
+import seleniumeasy.pageobjects.MultipleRadioButtonsForm;
+import seleniumeasy.pageobjects.RadioButtonsForm;
 import seleniumeasy.pageobjects.SingleInputFieldsForm;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static java.util.Arrays.asList;
@@ -106,12 +107,32 @@ public class WhenInteractingWithInputForms {
      * Check that a message appears when you click the radio button
      * https://www.seleniumeasy.com/test/basic-radiobutton-demo.html
      */
+
+    RadioButtonsForm radioButtonsForm;
+
     @Test
     public void radioButtons() {
+        radioButtonsForm.open();
+
+        radioButtonsForm.selectRadioButton("Male");
+        radioButtonsForm.getCheckedValue();
+
+        assertThat(radioButtonsForm.getResult()).isEqualTo("Radio button 'Male' is checked");
     }
+
+    MultipleRadioButtonsForm multipleRadioButtonsForm;
 
     @Test
     public void multipleRadioButtons() {
+        multipleRadioButtonsForm.open();
+
+        multipleRadioButtonsForm.selectGender("Male");
+        multipleRadioButtonsForm.selectAge("15 - 50");
+        multipleRadioButtonsForm.getValues();
+
+        assertThat(multipleRadioButtonsForm.getResult())
+                .contains("Sex : Male")
+                .contains("Age group: 15 - 50");
     }
 
     /**
