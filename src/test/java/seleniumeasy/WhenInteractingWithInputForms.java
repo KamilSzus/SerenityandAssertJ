@@ -7,8 +7,10 @@ import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
 import seleniumeasy.pageobjects.CheckboxForm;
 import seleniumeasy.pageobjects.DoubleInputFieldsForm;
+import seleniumeasy.pageobjects.MultiSelectListFrom;
 import seleniumeasy.pageobjects.MultipleRadioButtonsForm;
 import seleniumeasy.pageobjects.RadioButtonsForm;
+import seleniumeasy.pageobjects.SelectListForm;
 import seleniumeasy.pageobjects.SingleInputFieldsForm;
 
 import java.util.List;
@@ -139,15 +141,36 @@ public class WhenInteractingWithInputForms {
      * Dropdown lists
      * https://www.seleniumeasy.com/test/basic-select-dropdown-demo.html
      */
+
+    SelectListForm selectListForm;
+
     @Test
     public void selectList() {
+        selectListForm.open();
+
+        assertThat(selectListForm.selectedDay()).isEmpty();
+
+        selectListForm.selectDay("Sunday");
+
+        assertThat(selectListForm.selectedDay()).isEqualTo("Sunday");
     }
 
     /**
      * Multi-Select Dropdown lists
      * https://www.seleniumeasy.com/test/basic-select-dropdown-demo.html
      */
+
+    MultiSelectListFrom multiSelectListFrom;
+
     @Test
     public void multiSelectList() {
+        multiSelectListFrom.open();
+
+        assertThat(multiSelectListFrom.selectedStates()).isEmpty();
+
+        multiSelectListFrom.selectState("California","Florida");
+
+        assertThat(multiSelectListFrom.selectedStates()).containsExactly("California","Florida");
+
     }
 }
