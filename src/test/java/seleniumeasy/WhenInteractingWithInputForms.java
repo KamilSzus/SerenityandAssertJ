@@ -7,6 +7,7 @@ import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
 import seleniumeasy.pageobjects.CheckboxForm;
 import seleniumeasy.pageobjects.DoubleInputFieldsForm;
+import seleniumeasy.pageobjects.HoverAction;
 import seleniumeasy.pageobjects.MultiSelectListFrom;
 import seleniumeasy.pageobjects.MultipleRadioButtonsForm;
 import seleniumeasy.pageobjects.RadioButtonsForm;
@@ -171,6 +172,18 @@ public class WhenInteractingWithInputForms {
         multiSelectListFrom.selectState("California","Florida");
 
         assertThat(multiSelectListFrom.selectedStates()).containsExactly("California","Florida");
+
+    }
+
+    HoverAction hoverAction;
+
+    @Test
+    public void hover(){
+        hoverAction.open();
+
+        hoverAction.hoverOverFigure(1);
+        hoverAction.captionForFigure(1).shouldBeVisible();
+        hoverAction.captionForFigure(1).shouldContainText("user1");
 
     }
 }
