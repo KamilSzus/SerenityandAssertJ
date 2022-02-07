@@ -1,9 +1,5 @@
 package seleniumeasy.pageobjects;
 
-import net.thucydides.core.annotations.DefaultUrl;
-import org.openqa.selenium.By;
-
-@DefaultUrl("https://demo.seleniumeasy.com/basic-checkbox-demo.html")
 public class CheckboxForm extends SeleniumEasyForm {
 
 

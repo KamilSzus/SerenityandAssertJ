@@ -1,8 +1,5 @@
 package seleniumeasy.pageobjects;
 
-import net.thucydides.core.annotations.DefaultUrl;
-
-@DefaultUrl("https://demo.seleniumeasy.com/basic-radiobutton-demo.html")
 public class MultipleRadioButtonsForm extends SeleniumEasyForm{
 
     public void selectGender(String gender) {

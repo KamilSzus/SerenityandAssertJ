@@ -2,9 +2,12 @@ package seleniumeasy;
 
 import net.serenitybdd.junit.runners.SerenityRunner;
 import net.thucydides.core.annotations.Managed;
+import net.thucydides.core.annotations.Steps;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
+import seleniumeasy.action.FormPage;
+import seleniumeasy.action.NavigateAction;
 import seleniumeasy.pageobjects.CheckboxForm;
 import seleniumeasy.pageobjects.DoubleInputFieldsForm;
 import seleniumeasy.pageobjects.HoverAction;
@@ -28,6 +31,8 @@ public class WhenInteractingWithInputForms {
 
     @Managed(driver = "chrome",uniqueSession = true)
     WebDriver driver;
+    @Steps
+    NavigateAction navigate;
 
     /**
      * Basic form fields:
@@ -39,7 +44,7 @@ public class WhenInteractingWithInputForms {
 
     @Test
     public void basicForms() {
-        singleInputFieldsForm.open();
+        navigate.to(FormPage.SingleInputFieldsForm);
 
         singleInputFieldsForm.enterMessage("Hello There");
 
@@ -58,7 +63,7 @@ public class WhenInteractingWithInputForms {
 
     @Test
     public void basicFormsWithMultipleFields() {
-        doubleInputFieldsForm.open();
+        navigate.to(FormPage.DoubleInputFieldsForm);
 
         doubleInputFieldsForm.enterFirstNumber("4");
 
@@ -79,7 +84,7 @@ public class WhenInteractingWithInputForms {
 
     @Test
     public void singleCheckbox() {
-        checkboxForm.open();
+        navigate.to(FormPage.CheckboxForm);
 
         checkboxForm.setCheckboxSelected();
 
@@ -90,7 +95,7 @@ public class WhenInteractingWithInputForms {
 
     @Test
     public void multipleCheckboxes() {
-        checkboxForm.open();
+        navigate.to(FormPage.CheckboxForm);
 
         assertThat(ALL_OPTIONS).allMatch(
                 option -> !checkboxForm.optionIsCheckedFor(option)
@@ -115,7 +120,7 @@ public class WhenInteractingWithInputForms {
 
     @Test
     public void radioButtons() {
-        radioButtonsForm.open();
+        navigate.to(FormPage.RadioButtonsForm);
 
         radioButtonsForm.selectRadioButton("Male");
         radioButtonsForm.getCheckedValue();
@@ -127,7 +132,7 @@ public class WhenInteractingWithInputForms {
 
     @Test
     public void multipleRadioButtons() {
-        multipleRadioButtonsForm.open();
+        navigate.to(FormPage.MultipleRadioButtonsForm);
 
         multipleRadioButtonsForm.selectGender("Male");
         multipleRadioButtonsForm.selectAge("15 - 50");
@@ -147,7 +152,7 @@ public class WhenInteractingWithInputForms {
 
     @Test
     public void selectList() {
-        selectListForm.open();
+        navigate.to(FormPage.SelectListForm);
 
         assertThat(selectListForm.selectedDay()).isEmpty();
 
@@ -165,7 +170,7 @@ public class WhenInteractingWithInputForms {
 
     @Test
     public void multiSelectList() {
-        multiSelectListFrom.open();
+        navigate.to(FormPage.MultiSelectListFrom);
 
         assertThat(multiSelectListFrom.selectedStates()).isEmpty();
 
@@ -179,7 +184,7 @@ public class WhenInteractingWithInputForms {
 
     @Test
     public void hover(){
-        hoverAction.open();
+        navigate.to(FormPage.HoverAction);
 
         hoverAction.hoverOverFigure(1);
         hoverAction.captionForFigure(1).shouldBeVisible();
