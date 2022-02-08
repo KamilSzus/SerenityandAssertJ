@@ -5,7 +5,6 @@ import net.serenitybdd.core.pages.WebElementState;
 import net.thucydides.core.annotations.DefaultUrl;
 import org.openqa.selenium.WebElement;
 
-@DefaultUrl("http://the-internet.herokuapp.com/hovers")
 public class HoverAction extends PageObject {
 
     private static final String FIGURE_VISIBLE = "//*[@class='figure'][{0}]";
