@@ -1,12 +1,5 @@
 package serenitySwag.authentication;
 
-/*
-Accepted usernames are:
-standard_user
-locked_out_user
-problem_user
-performance_glitch_user
- */
 public enum User {
     STANDARD_USER("standard_user","secret_sauce","a standard user"),
     LOCKER_OUT_USER("locked_out_user","secret_sauce","a locked user"),
