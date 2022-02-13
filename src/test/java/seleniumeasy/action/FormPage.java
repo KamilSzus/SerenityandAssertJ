@@ -9,4 +9,5 @@ public enum FormPage {
     ,RadioButtonsForm
     ,SelectListForm
     ,SingleInputFieldsForm
+    ,ModalDialog
 }
