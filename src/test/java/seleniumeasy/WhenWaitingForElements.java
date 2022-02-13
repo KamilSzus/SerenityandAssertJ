@@ -41,7 +41,7 @@ public class WhenWaitingForElements {
 
     @Test
     public void waitingForAMessageToClose() {
-        alertMessage.open();
+        navigate.to(FormPage.AlertMessage);
 
         alertMessage.isAlertLunch().shouldNotBeVisible();
         alertMessage.runAlert();
