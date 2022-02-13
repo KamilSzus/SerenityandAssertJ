@@ -1,5 +1,7 @@
 package seleniumeasy.action;
 
+import seleniumeasy.pageobjects.AlertMessage;
+
 public enum FormPage {
     CheckboxForm
     ,DoubleInputFieldsForm
@@ -9,4 +11,6 @@ public enum FormPage {
     ,RadioButtonsForm
     ,SelectListForm
     ,SingleInputFieldsForm
+    ,ModalDialog
+    ,AlertMessage
 }
