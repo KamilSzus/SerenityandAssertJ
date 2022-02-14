@@ -9,6 +9,7 @@ import org.openqa.selenium.WebDriver;
 import seleniumeasy.action.FormPage;
 import seleniumeasy.action.NavigateAction;
 import seleniumeasy.pageobjects.AlertMessage;
+import seleniumeasy.pageobjects.DynamicallyLoading;
 import seleniumeasy.pageobjects.ModalDialog;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
@@ -55,7 +56,16 @@ public class WhenWaitingForElements {
         alertMessage.isAlertLunch().shouldNotBeVisible();
     }
 
+    DynamicallyLoading dynamicallyLoading;
+
     @Test
     public void waitingForElementsToAppear() {
+        navigate.to(FormPage.DynamicallyLoading);
+
+        dynamicallyLoading.getNewUser();
+
+        assertThat(dynamicallyLoading.getUserData())
+                .contains("First Name :")
+                .contains("Last Name :");
     }
 }
