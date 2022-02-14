@@ -13,4 +13,5 @@ public enum FormPage {
     ,SingleInputFieldsForm
     ,ModalDialog
     ,AlertMessage
+    ,DynamicallyLoading
 }
