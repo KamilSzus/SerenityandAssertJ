@@ -2,7 +2,7 @@ package seleniumeasy.action;
 
 public enum FormPage {
     CheckboxForm
-    ,DoubleInputFieldsForm
+    , TwoInputFieldsForm
     ,HoverAction
     ,MultipleRadioButtonsForm
     ,MultiSelectListFrom
