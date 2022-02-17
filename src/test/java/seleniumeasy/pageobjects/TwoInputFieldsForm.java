@@ -1,6 +1,6 @@
 package seleniumeasy.pageobjects;
 
-public class DoubleInputFieldsForm extends  SeleniumEasyForm {
+public class TwoInputFieldsForm extends  SeleniumEasyForm {
 
     public void enterFirstNumber(String firstNumber) {
         $("#sum1").sendKeys(firstNumber);
@@ -10,7 +10,7 @@ public class DoubleInputFieldsForm extends  SeleniumEasyForm {
         $("#sum2").sendKeys(secondNumber);
     }
 
-    public void displayNumbers() {
+    public void getTotal() {
         $(FormButton.withLabel("Get Total")).click();
     }
 

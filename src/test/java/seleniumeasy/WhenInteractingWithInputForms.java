@@ -9,7 +9,7 @@ import org.openqa.selenium.WebDriver;
 import seleniumeasy.action.FormPage;
 import seleniumeasy.action.NavigateAction;
 import seleniumeasy.pageobjects.CheckboxForm;
-import seleniumeasy.pageobjects.DoubleInputFieldsForm;
+import seleniumeasy.pageobjects.TwoInputFieldsForm;
 import seleniumeasy.pageobjects.HoverAction;
 import seleniumeasy.pageobjects.MultiSelectListFrom;
 import seleniumeasy.pageobjects.MultipleRadioButtonsForm;
@@ -59,19 +59,19 @@ public class WhenInteractingWithInputForms {
      * https://www.seleniumeasy.com/test/basic-first-form-demo.html
      */
 
-    DoubleInputFieldsForm doubleInputFieldsForm;
+    TwoInputFieldsForm twoInputFieldsForm;
 
     @Test
     public void basicFormsWithMultipleFields() {
-        navigate.to(FormPage.DoubleInputFieldsForm);
+        navigate.to(FormPage.TwoInputFieldsForm);
 
-        doubleInputFieldsForm.enterFirstNumber("4");
+        twoInputFieldsForm.enterFirstNumber("4");
 
-        doubleInputFieldsForm.enterSecondNumber("6");
+        twoInputFieldsForm.enterSecondNumber("6");
 
-        doubleInputFieldsForm.displayNumbers();
+        twoInputFieldsForm.getTotal();
 
-        assertThat(doubleInputFieldsForm.displayNumber()).isEqualTo("10");
+        assertThat(twoInputFieldsForm.displayNumber()).isEqualTo("10");
     }
 
     /**
