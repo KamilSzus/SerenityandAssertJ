@@ -3,6 +3,7 @@ package seleniumeasy;
 import net.serenitybdd.junit.runners.SerenityRunner;
 import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Steps;
+import net.thucydides.core.annotations.WithTag;
 import net.thucydides.core.configuration.SessionLocalTempDirectory;
 import org.awaitility.Awaitility;
 import org.junit.Test;
@@ -81,6 +82,7 @@ public class WhenWaitingForElements {
     DownloadPage downloadPage;
 
     @Test
+    @WithTag("local")
     public void waitingToDownloadFile(){
         navigate.to(FormPage.DownloadPage);
 
